@@ -45,7 +45,8 @@ class HistorySave(sublime_plugin.EventListener):
             # Not saving
             if os.path.getsize(file_path) > FILE_SIZE_LIMIT:
                 return
-
+            if os.path.getsize(map_path) == 0:
+                return
             file_name = os.path.basename(file_path)
             new_file_name = "{0}.{1}".format(dt.now().strftime("%b.%d.%Y.%H.%M.%S"), file_name)
             new_file_path = os.path.join(history_path, new_file_name)
