@@ -24,6 +24,8 @@ map_path = os.path.join(history_path, ".map")
 def create_history_dir_map():
     if not os.path.exists(history_path):
         os.makedirs(history_path)
+    if os.path.getsize(map_path) == 0:
+        #temp fix EOFError
         pickle.dump(defaultdict(list), open(map_path, "wb"), -1)
 create_history_dir_map()
 
